@@ -27,18 +27,19 @@ $(function() {
     $(window).scroll(makebgnav);
     // Loading Page
     $(window).on("load", function() {
-        typeItSelf();
-        if (window.location.pathname.includes("team-info")) {
-            getFilterInfoFromURL();
-        }
-        getDataMemebersFromJson();
-        searchMembersInput();
-        filterMembersUrl();
-        makeNumberLetter();
-        editBtnOrder();
-        getOrdersFromLocal();
-        formFunctions();
+        $('.loading-spinner').remove();
     });
+    typeItSelf();
+    if (window.location.pathname.includes("team-info")) {
+        getFilterInfoFromURL();
+    }
+    getDataMemebersFromJson();
+    searchMembersInput();
+    filterMembersUrl();
+    makeNumberLetter();
+    editBtnOrder();
+    getOrdersFromLocal();
+    formFunctions();
     // Change bgcolor For Navbar When Scrolling
     function makebgnav() {
         if ($(window).scrollTop() >= main_navbar.innerHeight()) {
@@ -378,16 +379,5 @@ $(function() {
         format = `${days}/${month}/${year}  ${hours}:${minutes}`;
         return format;
     }
-
-
-    $(document)
-        .ajaxStart(function() {
-            $('body').prepend(`
-            <div class="loading-spinner"><div class="lds-ring"><div></div><div></div><div></div><div></div></div></div>
-            `);
-        })
-        .ajaxStop(function() {
-            $('.loading-spinner').remove();
-        });
 
 });
