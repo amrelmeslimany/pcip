@@ -1,4 +1,4 @@
-(function($) {
+(function() {
     /* Header Of Home */
     const
     // Navbar
@@ -381,4 +381,4 @@
         return format;
     }
 
-})(jQuery);​
+});​
