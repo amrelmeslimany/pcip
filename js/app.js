@@ -33,7 +33,7 @@ $(function() {
     if (window.location.pathname.includes("team-info")) {
         getFilterInfoFromURL();
     }
-    getDataMemebersFromJson();
+    /* getDataMemebersFromJson(); */
     searchMembersInput();
     filterMembersUrl();
     makeNumberLetter();
