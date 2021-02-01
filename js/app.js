@@ -25,10 +25,10 @@
     /* Navbar */
     // Scroll
     $(window).scroll(makebgnav);
-    // Loading Page
-    $(window).load(function() {
-        $('.loading-spinner').remove();
-    });
+    /*     // Loading Page
+        $(window).load(function() {
+            $('.loading-spinner').remove();
+        }); */
     typeItSelf();
     if (window.location.pathname.includes("team-info")) {
         getFilterInfoFromURL();
