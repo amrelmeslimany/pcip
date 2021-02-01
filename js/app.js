@@ -28,18 +28,18 @@
     // Loading Page
     $(window).load(function() {
         $('.loading-spinner').remove();
-        typeItSelf();
-        if (window.location.pathname.includes("team-info")) {
-            getFilterInfoFromURL();
-        }
-        /* getDataMemebersFromJson(); */
-        searchMembersInput();
-        filterMembersUrl();
-        makeNumberLetter();
-        editBtnOrder();
-        getOrdersFromLocal();
-        formFunctions();
     });
+    typeItSelf();
+    if (window.location.pathname.includes("team-info")) {
+        getFilterInfoFromURL();
+    }
+    /* getDataMemebersFromJson(); */
+    searchMembersInput();
+    filterMembersUrl();
+    makeNumberLetter();
+    editBtnOrder();
+    getOrdersFromLocal();
+    formFunctions();
 
     // Change bgcolor For Navbar When Scrolling
     function makebgnav() {
