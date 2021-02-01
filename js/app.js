@@ -26,9 +26,9 @@ $(function() {
     // Scroll
     $(window).scroll(makebgnav);
     // Loading Page
-    /* $(window).load(function() {
+    $(window).load(function() {
         $('.loading-spinner').remove();
-    }); */
+    });
     typeItSelf();
     if (window.location.pathname.includes("team-info")) {
         getFilterInfoFromURL();
