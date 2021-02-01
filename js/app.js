@@ -26,20 +26,21 @@ $(function() {
     // Scroll
     $(window).scroll(makebgnav);
     // Loading Page
-    $(window).load(function() {
+    window.onload = function() {
         $('.loading-spinner').remove();
-    });
-    typeItSelf();
-    if (window.location.pathname.includes("team-info")) {
-        getFilterInfoFromURL();
-    }
-    /* getDataMemebersFromJson(); */
-    searchMembersInput();
-    filterMembersUrl();
-    makeNumberLetter();
-    editBtnOrder();
-    getOrdersFromLocal();
-    formFunctions();
+        typeItSelf();
+        if (window.location.pathname.includes("team-info")) {
+            getFilterInfoFromURL();
+        }
+        /* getDataMemebersFromJson(); */
+        searchMembersInput();
+        filterMembersUrl();
+        makeNumberLetter();
+        editBtnOrder();
+        getOrdersFromLocal();
+        formFunctions();
+    };
+
     // Change bgcolor For Navbar When Scrolling
     function makebgnav() {
         if ($(window).scrollTop() >= main_navbar.innerHeight()) {
