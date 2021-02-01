@@ -1,4 +1,4 @@
-(function() {
+$(function() {
     /* Header Of Home */
     const
     // Navbar
@@ -25,10 +25,10 @@
     /* Navbar */
     // Scroll
     $(window).scroll(makebgnav);
-    /*     // Loading Page
-        $(window).load(function() {
-            $('.loading-spinner').remove();
-        }); */
+    // Loading Page
+    /* $(window).load(function() {
+        $('.loading-spinner').remove();
+    }); */
     typeItSelf();
     if (window.location.pathname.includes("team-info")) {
         getFilterInfoFromURL();
@@ -40,7 +40,6 @@
     editBtnOrder();
     getOrdersFromLocal();
     formFunctions();
-
     // Change bgcolor For Navbar When Scrolling
     function makebgnav() {
         if ($(window).scrollTop() >= main_navbar.innerHeight()) {
@@ -381,4 +380,4 @@
         return format;
     }
 
-});​
+});
