@@ -25,21 +25,22 @@ $(function() {
     /* Navbar */
     // Scroll
     $(window).scroll(makebgnav);
-    // Loading Page
-    window.onload = function() {
-        $('.loading-spinner').remove();
-        typeItSelf();
-        if (window.location.pathname.includes("team-info")) {
-            getFilterInfoFromURL();
-        }
-        /* getDataMemebersFromJson(); */
-        searchMembersInput();
-        filterMembersUrl();
-        makeNumberLetter();
-        editBtnOrder();
-        getOrdersFromLocal();
-        formFunctions();
-    };
+    // Run Functions
+    /* Home Page */
+    typeItSelf();
+    /* Team Info Page */
+    if (window.location.pathname.includes("team-info")) {
+        getFilterInfoFromURL();
+    }
+    /* Memebers Page */
+    searchMembersInput();
+    /* Memebers PAge */
+    filterMembersUrl();
+    /* Orders Page */
+    makeNumberLetter();
+    getOrdersFromLocal();
+    /* Contact Page */
+    formFunctions();
 
     // Change bgcolor For Navbar When Scrolling
     function makebgnav() {
@@ -105,78 +106,6 @@ $(function() {
                 }
             });
         });
-    }
-
-    /* Get Data From json file  */
-    function getDataMemebersFromJson() {
-        let urlDataMemebers = "http://localhost:3000/members";
-        $.get(urlDataMemebers,
-            function(data) {
-                for (let i = 0; i < data.length; i++) {
-                    let id_withname = data[i]['memberName'].toLowerCase().replace(' ', '-');
-                    filter_members_title_items.find(`[data-category="${data[i]['memberCategory']}"]`).after(`
-                <a class="list-group-item list-group-item-action" data-toggle="list" href="#${id_withname}-${data[i]['id']}" role="tab" aria-controls="${data[i]['memberName']}">${data[i]['memberName']}</a>
-                `);
-                    let tem = `
-                <div class="tab-pane fade" id="${id_withname}-${data[i]['id']}" role="tabpanel" aria-labelledby="${id_withname}-${data[i]['id']}-list">
-                                <img src="${data[i]["imgSrc"]}" alt="member" class="img-thumbnail img-fluid rounded-circle border-primary">
-                                <div class="member-info">
-                                    <span class="member-name">name : <strong>${data[i]["memberName"]}</strong></span>
-                                    <span class="member-age">age : <strong>${data[i]["memberAge"]}</strong></span>
-                                    <span class="member-college">college : <strong>${data[i]["memberCollege"]}</strong></span>
-                                    <span class="member-team">team : <strong>${data[i]["memberTeam"]}</strong></span>
-                                    <span class="member-role">role : <strong>${data[i]["memberRole"]}</strong></span>
-                                </div>
-                                <hr>
-                                <h3 class="pt-title">Portfolio</h3>
-                                <div class="portfolio">
-                                    <div class="row no-gutters">
-                                    </div>
-                                </div>
-                                <hr>
-                                <h3 class="sk-title">Skills</h3>
-                                <ul class="list-unstyled list-group list-group-horizontal list-skills flex-wrap">
-
-                                </ul>
-                            </div>
-                `;
-                    profile_box.append(tem);
-                    createPortfolio(data[i]['memberPortfolio'], $(`#${id_withname}-${data[i]['id']} .portfolio .row`), data[i]['memberSkills'], $(`#${id_withname}-${data[i]['id']} .list-skills`));
-                }
-            }).always(function() { filter_members_title_items.removeClass("loading"); }).fail(function() { console.log("You Must Create Json File in database to get all members.") });
-    }
-
-    function createPortfolio(arrPortfolio, appendElmPortfolio, arrSkills, appendElmSkills) {
-        if (arrPortfolio.length > 0) {
-            arrPortfolio.forEach((elm) => {
-                appendElmPortfolio.append(
-                    `
-                    <div class="col-lg-3 col-md-4 col-sm-6">
-                        <div class="card">
-                            <img src="${elm["pImg"]}" class="card-img-top" alt="portfolio img">
-                            <div class="card-footer p-1">
-                                <a href="${elm["pLink"]}" class="btn btn-primary btn-block text-light">Demo</a>
-                            </div>
-                        </div>
-                    </div>
-                    `
-                );
-            });
-        } else {
-            appendElmPortfolio.append('<strong class="text-left">No Portfolio</strong>');
-        }
-        if (arrSkills.length > 0) {
-            arrSkills.forEach(ele => {
-                appendElmSkills.append(`
-                
-                <li class="item"><span class="badge bg-primary p-1 rounded-0 text-uppercase">${ele}</span></li>
-    
-                `);
-            });
-        } else {
-            appendElmSkills.append('<strong>No Skills</strong>')
-        }
-
     }
 
     function filterMembersUrl() {
@@ -264,13 +193,6 @@ $(function() {
             if ($(this).text().length > 19) {
                 $(this).text(slicing + '........');
             }
-        });
-    }
-
-    function editBtnOrder() {
-        const edit_btn = $('#orders-page .edit-btn');
-        edit_btn.on('click', function() {
-            console.log("Goood")
         });
     }
 
@@ -380,5 +302,7 @@ $(function() {
         format = `${days}/${month}/${year}  ${hours}:${minutes}`;
         return format;
     }
+
+
 
 });
